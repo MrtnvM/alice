@@ -1,7 +1,7 @@
-import 'package:alice/model/alice_menu_item.dart';
-import 'package:alice/ui/alice_call_details_screen.dart';
 import 'package:alice/core/alice_core.dart';
 import 'package:alice/model/alice_http_call.dart';
+import 'package:alice/model/alice_menu_item.dart';
+import 'package:alice/ui/alice_call_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'alert_helper.dart';
@@ -23,7 +23,6 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
   _AliceCallsListScreenState() {
     _menuItems.add(AliceMenuItem("Delete", Icons.delete));
     _menuItems.add(AliceMenuItem("Stats", Icons.insert_chart));
-    _menuItems.add(AliceMenuItem("Save", Icons.save));
   }
 
   @override
@@ -62,9 +61,6 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
     }
     if (menuItem.title == "Stats") {
       _showStatsScreen();
-    }
-    if (menuItem.title == "Save") {
-      _saveToFile();
     }
   }
 
@@ -110,12 +106,10 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
   _getListElements() {
     List<Widget> widgets = List();
     widget._aliceCore.calls.forEach((AliceHttpCall call) {
-      widgets.add(AliceCallListItem(call,_onListItemClicked));
+      widgets.add(AliceCallListItem(call, _onListItemClicked));
     });
     return widgets;
   }
-
-
 
   void _onListItemClicked(AliceHttpCall call) {
     Navigator.push(
@@ -145,9 +139,4 @@ class _AliceCallsListScreenState extends State<AliceCallsListScreen> {
         MaterialPageRoute(
             builder: (context) => AliceStatsScreen(widget._aliceCore.calls)));
   }
-
-  void _saveToFile() async {
-    widget._aliceCore.saveHttpRequests(context);
-  }
-
 }
