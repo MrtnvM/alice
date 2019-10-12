@@ -13,9 +13,9 @@ class Alice {
   AliceHttpClientAdapter _httpClientAdapter;
   AliceHttpAdapter _httpAdapter;
 
-  Alice(GlobalKey<NavigatorState> navigatorKey}) {
+  Alice(GlobalKey<NavigatorState> navigatorKey) {
     _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
-    _core = AliceCore(_navigatorKey, showNotification);
+    _core = AliceCore(_navigatorKey);
     _httpClientAdapter = AliceHttpClientAdapter(_core);
     _httpAdapter = AliceHttpAdapter(_core);
   }
