@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AlertHelper {
+class AliceAlertHelper {
   static void showAlert(BuildContext context, String title, String description,
       {String firstButtonTitle = "Accept",
       String secondButtonTitle,

@@ -1,3 +1,20 @@
+## 0.0.15
+* Updated dependencies
+
+## 0.0.14
+* Fixed Dio API breaking change
+
+## 0.0.13
+* Updated dependencies
+* Notification won't init when showNotification is off
+
+## 0.0.12
+* Updated flutter local notification dependency version
+* Refactor
+
+## 0.0.11
+* Fixed iOS version issues (fixed by https://github.com/britannio Britannio Jarrett)
+
 ## 0.0.10
 * Added stats feature
 * Added save feature

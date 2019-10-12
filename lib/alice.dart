@@ -13,9 +13,9 @@ class Alice {
   AliceHttpClientAdapter _httpClientAdapter;
   AliceHttpAdapter _httpAdapter;
 
-  Alice({GlobalKey<NavigatorState> navigatorKey}) {
+  Alice(GlobalKey<NavigatorState> navigatorKey}) {
     _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
-    _core = AliceCore(_navigatorKey);
+    _core = AliceCore(_navigatorKey, showNotification);
     _httpClientAdapter = AliceHttpClientAdapter(_core);
     _httpAdapter = AliceHttpAdapter(_core);
   }
@@ -29,16 +29,20 @@ class Alice {
   }
 
   void onHttpClientRequest(HttpClientRequest request, {dynamic body}) {
+    assert(request != null, "HttpClientRequest can't be null");
     _httpClientAdapter.onRequest(request, body: body);
   }
 
   void onHttpClientResponse(
       HttpClientResponse response, HttpClientRequest request,
       {dynamic body}) {
+    assert(response != null, "HttpClientResponse can't be null");
+    assert(request != null, "HttpClientRequest can't be null");
     _httpClientAdapter.onResponse(response, request, body: body);
   }
 
   void onHttpResponse(http.Response response, {dynamic body}) {
+    assert(response != null, "Response can't be null");
     _httpAdapter.onResponse(response, body: body);
   }
 
