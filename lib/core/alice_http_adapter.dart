@@ -38,10 +38,10 @@ class AliceHttpAdapter {
     AliceHttpRequest httpRequest = AliceHttpRequest();
 
     if (response.request is http.Request) {
-        // we are guranteed the existence of body and headers
-        httpRequest.body = body ?? (response.request as http.Request).body ?? "";
-        httpRequest.size = utf8.encode(httpRequest.body.toString()).length;
-        httpRequest.headers = Map.from(response.request.headers);
+      // we are guranteed the existence of body and headers
+      httpRequest.body = body ?? (response.request as http.Request).body ?? "";
+      httpRequest.size = utf8.encode(httpRequest.body.toString()).length;
+      httpRequest.headers = Map.from(response.request.headers);
     } else if (body == null) {
       httpRequest.size = 0;
       httpRequest.body = "";
@@ -58,6 +58,8 @@ class AliceHttpAdapter {
     }
 
     httpRequest.contentType = contentType;
+
+    httpRequest.queryParameters = response.request.url.queryParameters;
 
     AliceHttpResponse httpResponse = AliceHttpResponse();
     httpResponse.status = response.statusCode;
