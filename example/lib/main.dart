@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    alice = Alice(GlobalKey<NavigatorState>());
+    alice = Alice(navigatorKey: GlobalKey<NavigatorState>());
     dio = Dio();
     dio.interceptors.add(alice.getDioInterceptor());
     httpClient = HttpClient();
